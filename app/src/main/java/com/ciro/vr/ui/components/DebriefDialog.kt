@@ -169,44 +169,44 @@ fun DebriefDialog(
                     // GOD MODE 3-ACTS
                     ActCard(
                         actNumber = "1",
-                        actTitle = "Ilusi Dewa (The God Illusion)",
-                        description = "Di awal, otakmu mengira kamu menemukan pola rahasia semesta. Tebakanmu tembus berkali-kali. Ego berbisik: 'Aku sakti, aku jenius, aku bisa mengendalikan masa depan!' Dopamin membanjiri otakmu.",
+                        actTitle = state.settings.godAct1Title,
+                        description = state.settings.godAct1Text,
                         badgeColor = WinGreen
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     ActCard(
                         actNumber = "2",
-                        actTitle = "Disonansi ('Kok Bisa? Kok Gini?!')",
-                        description = "Lalu sistem memutus keberuntunganmu dan mengacak dadu secara netral. Rentetan kekalahan menghantam. Kamu gelisah, bingung, dan bernafsu menebak lagi karena mengira tebakan berikutnya 'pasti tembus' (Chasing Losses).",
+                        actTitle = state.settings.godAct2Title,
+                        description = state.settings.godAct2Text,
                         badgeColor = NeutralGold
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     ActCard(
                         actNumber = "3",
-                        actTitle = "Jebakan (Masuk Dewa, Keluar Budak)",
-                        description = "Tirai terbuka: Kamu sadar bahwa kamu tidak pernah mengontrol apa pun. Kemenangan tadi hanyalah umpan algoritma. Kamu masuk merasa jadi Dewa, dan keluar menjadi budak probabilitas wkwk.",
+                        actTitle = state.settings.godAct3Title,
+                        description = state.settings.godAct3Text,
                         badgeColor = LossRed
                     )
                 } else {
                     // CURSE MODE 3-ACTS
                     ActCard(
                         actNumber = "1",
-                        actTitle = "Paranoia ('Semesta Benci Banget Sama Aku')",
-                        description = "Kamu tebak 5 keluar 4, tebak 2 keluar 3. Kalah meleset tipis 7x berturut-turut! Otakmu panas dan berbisik: 'Anjir, dicurangi! Kenapa aku selalu sial? Semesta kayaknya sengaja nyerang aku hari ini.'",
+                        actTitle = state.settings.curseAct1Title,
+                        description = state.settings.curseAct1Text,
                         badgeColor = LossRed
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     ActCard(
                         actNumber = "2",
-                        actTitle = "Kepasrahan (Learned Helplessness)",
-                        description = "Kamu mulai klik tombol dengan lesu tanpa harapan. Kamu meyakinkan dirimu: 'Ya sudah lah, nasibku emang ampas.' Kamu mengidentifikasi dirimu sebagai orang paling malang di muka bumi.",
+                        actTitle = state.settings.curseAct2Title,
+                        description = state.settings.curseAct2Text,
                         badgeColor = NearMissOrange
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     ActCard(
                         actNumber = "3",
-                        actTitle = "Pencerahan (Geer Merasa Dikutuk wkwk)",
-                        description = "Lalu tiba-tiba kemenangan datang beruntun! Kamu tertawa sadar: Semesta tidak pernah punya dendam kepadamu. Dadu ini tidak punya emosi. Rasa terkutuk itu cuma kegeeran ego yang mengira dirinya terlalu penting. Keacakan itu 100% netral!",
+                        actTitle = state.settings.curseAct3Title,
+                        description = state.settings.curseAct3Text,
                         badgeColor = WinGreen
                     )
                 }

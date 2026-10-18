@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Science
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -35,10 +36,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ciro.vr.engine.CiroVREngine
+import com.ciro.vr.engine.SettingsManager
 import com.ciro.vr.model.GameMode
 import com.ciro.vr.ui.screens.BlindModeScreen
 import com.ciro.vr.ui.screens.ConsciousModeScreen
 import com.ciro.vr.ui.screens.PhilosophyScreen
+import com.ciro.vr.ui.screens.SettingsScreen
 import com.ciro.vr.ui.theme.CiroVRTheme
 import com.ciro.vr.ui.theme.DarkBackground
 import com.ciro.vr.ui.theme.DarkBorder
@@ -49,11 +52,15 @@ import com.ciro.vr.ui.theme.TextSecondaryDark
 
 class MainActivity : ComponentActivity() {
 
-    private val engine = CiroVREngine()
+    private lateinit var settingsManager: SettingsManager
+    private lateinit var engine: CiroVREngine
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        settingsManager = SettingsManager(applicationContext)
+        engine = CiroVREngine(settingsManager.settings.value)
+
         enableEdgeToEdge()
         setContent {
             CiroVRTheme {
@@ -101,7 +108,8 @@ class MainActivity : ComponentActivity() {
                             val items = listOf(
                                 Triple("Uji Buta", Icons.Default.Lock, 0),
                                 Triple("Matrix Lab", Icons.Default.Science, 1),
-                                Triple("Filosofi", Icons.Default.MenuBook, 2)
+                                Triple("Filosofi", Icons.Default.MenuBook, 2),
+                                Triple("Pengaturan", Icons.Default.Settings, 3)
                             )
 
                             items.forEach { (label, icon, index) ->
@@ -119,7 +127,7 @@ class MainActivity : ComponentActivity() {
                                     label = {
                                         Text(
                                             text = label,
-                                            fontSize = 11.sp,
+                                            fontSize = 10.sp,
                                             fontWeight = if (selectedTabIndex == index) FontWeight.Bold else FontWeight.Normal
                                         )
                                     },
@@ -152,6 +160,10 @@ class MainActivity : ComponentActivity() {
                                 engine = engine
                             )
                             2 -> PhilosophyScreen()
+                            3 -> SettingsScreen(
+                                engine = engine,
+                                settingsManager = settingsManager
+                            )
                         }
                     }
                 }
